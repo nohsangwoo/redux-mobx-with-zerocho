@@ -41,7 +41,7 @@ const enhancer = compose(
   applyMiddleware(thunkMiddleware, firstMiddleware, secondMiddleware)
 );
 
-const store = createStore(reducer, enhancer);
+const store = createStore(reducer, initialState, enhancer);
 
 // react-redux 안에 포함돼있음, 그래서 보통 react에선 쓸일이 별로 없음 에러 확인할때만 씀
 // store.subscribe(() => {
