@@ -61,3 +61,11 @@ draft.loginState = "로그아웃 성공";
 
 immer를 사용하면 이처럼 간단해진다
 이전에는 immutablejs가 있는데 그냥 immer쓰던가 redux toolkit으로 넘어가자
+
+## 5. react-redux-toolkit
+
+## redux toolkit
+
+- npm install @reduxjs/toolkit
+
+## createSlice
