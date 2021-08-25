@@ -4,6 +4,11 @@ const initialState = {
   isLogginIn: true,
   data: null,
   loginState: "로그인해주세요",
+  email: "",
+  password: "",
+  prices: Array(100)
+    .fill()
+    .map((v, i) => (i + 1) * 100),
 };
 const userReducer = (state = initialState, action) => {
   switch (action.type) {

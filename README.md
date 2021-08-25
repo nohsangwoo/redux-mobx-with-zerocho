@@ -77,3 +77,7 @@ immer를 사용하면 이처럼 간단해진다
 - extraReducers를 builder의 addCase를 이용하여 구성하면 typesciprt 사용시 타입추론이 잘된다
 - addMatcher
   여러 액션중 공통되는 로직이 있다면 조건을 걸어서 해결해버릴수있음
+
+## reselector
+
+- redux 사용시 리렌더링으로 자원소모되는 부분 해결해준다
