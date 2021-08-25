@@ -69,3 +69,7 @@ immer를 사용하면 이처럼 간단해진다
 - npm install @reduxjs/toolkit
 
 ## createSlice
+
+## 비동기인경우엔 action파일에 따로 구현해서 사용할때도 action파일에서 트리거를 불러오고
+
+## 동기인경우엔 reducer파일에서 바로 불러온다

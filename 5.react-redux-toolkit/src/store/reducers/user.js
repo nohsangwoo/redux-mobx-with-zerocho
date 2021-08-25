@@ -3,7 +3,7 @@ import { logIn } from "../actions/userAction";
 const initialState = {
   isLogginIn: true,
   data: null,
-  loginState: null,
+  loginState: "로그인해주세요",
 };
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -41,6 +41,7 @@ const userSlice = createSlice({
   reducers: {
     logOut(state, action) {
       state.data = null;
+      state.loginState = "로그인해주세요";
     },
   },
   // 비동기적인 내용
@@ -48,16 +49,19 @@ const userSlice = createSlice({
     // user/logIn/pending
     [logIn.pending](state, action) {
       state.isLogginIn = true;
+      state.loginState = "로그인중...";
     },
     // user/logIn/fulfilled
     [logIn.fulfilled](state, action) {
       state.data = action.payload;
       state.isLogginIn = false;
+      state.loginState = "로그인 성공";
     },
     // user/logIn/rejected
     [logIn.rejected](state, action) {
       state.data = null;
       state.isLogginIn = false;
+      state.loginState = "로그인 실패";
     },
   },
 });

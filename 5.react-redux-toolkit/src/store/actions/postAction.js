@@ -17,10 +17,3 @@ export const addPost = createAsyncThunk("post/add", async (data, thunkAPI) => {
 
   return result;
 });
-
-// export const addPost = (data) => {
-//   return {
-//     type: "ADD_POST",
-//     data,
-//   };
-// };

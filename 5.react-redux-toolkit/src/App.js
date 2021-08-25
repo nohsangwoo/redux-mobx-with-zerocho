@@ -3,9 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { logIn } from "./store/actions/userAction";
 import userSlice from "./store/reducers/user";
+
 function App() {
-  const { user } = useSelector((state) => state);
+  const { user, posts } = useSelector((state) => state);
+
   console.log("user information", user);
+  console.log("posts information", posts);
+
   const dispatch = useDispatch();
 
   const onClick = useCallback(() => {
