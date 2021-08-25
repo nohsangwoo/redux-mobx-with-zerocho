@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { addPost } from "../actions/postAction";
 
 const initialState = { data: [] };
 const postReducer = (state = initialState, action) => {
@@ -16,9 +17,17 @@ const postSlice = createSlice({
   name: "post",
   initialState,
   // 동기적
-  reducers: {},
+  reducers: {
+    clearPost(state, action) {
+      state.data = [];
+    },
+  },
   // 비동기적
-  extraReducers: {},
+  extraReducers: {
+    [addPost.pending](state, action) {},
+    [addPost.fulfilled](state, action) {},
+    [addPost.rejected](state, action) {},
+  },
 });
 
 export default postSlice;
