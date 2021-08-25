@@ -12,6 +12,8 @@
 
 ## middleware와 thunk
 
+## class 형식 리액트에서 redux 연결 및 사용법
+
 ## react redux
 
 - install
