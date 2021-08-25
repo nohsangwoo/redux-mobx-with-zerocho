@@ -70,6 +70,10 @@ immer를 사용하면 이처럼 간단해진다
 
 ## createSlice
 
+## 동기인경우엔 reducer파일에서 바로 불러온다
+
 ## 비동기인경우엔 action파일에 따로 구현해서 사용할때도 action파일에서 트리거를 불러오고
 
-## 동기인경우엔 reducer파일에서 바로 불러온다
+- extraReducers를 builder의 addCase를 이용하여 구성하면 typesciprt 사용시 타입추론이 잘된다
+- addMatcher
+  여러 액션중 공통되는 로직이 있다면 조건을 걸어서 해결해버릴수있음

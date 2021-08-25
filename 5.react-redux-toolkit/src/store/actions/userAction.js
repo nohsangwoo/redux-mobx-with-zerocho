@@ -10,7 +10,8 @@ const delay = (time, value) =>
 export const logIn = createAsyncThunk("user/logIn", async (data, thunkAPI) => {
   console.log("createAsyncThunk data", data);
 
-  throw new Error("비밀번호가 틀렸습니다.");
+  // 에러 발생하면 rejected로 포워딩 됨
+  // throw new Error("비밀번호가 틀렸습니다.");
   // thunk에서 getState 사용하기
   // const state = thunkAPI.getState();
 
