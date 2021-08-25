@@ -1,14 +1,12 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
+import { addPost } from "./store/actions/postAction";
 import { logIn } from "./store/actions/userAction";
 import userSlice from "./store/reducers/user";
 
 function App() {
   const { user, posts } = useSelector((state) => state);
-
-  console.log("user information", user);
-  console.log("posts information", posts);
 
   const dispatch = useDispatch();
 
@@ -26,6 +24,9 @@ function App() {
     dispatch(userSlice.actions.logOut());
   }, []);
 
+  const onAddPost = useCallback(() => {
+    dispatch(addPost());
+  }, []);
   return (
     <div className="App">
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -35,6 +36,18 @@ function App() {
       {user.data ? <div>{user.data.nickName}</div> : "please login"}
       <button onClick={onClick}>Login</button>
       <button onClick={onLogOut}>LogOut</button>
+      <button onClick={onAddPost}>add new post</button>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          border: "1px solid black",
+        }}
+      >
+        <div>{posts?.data?.title}</div>
+        <div>{posts?.data?.content}</div>
+        <div>{posts?.isLoading ? "새게시물 작성중" : ""}</div>
+      </div>
     </div>
   );
 }

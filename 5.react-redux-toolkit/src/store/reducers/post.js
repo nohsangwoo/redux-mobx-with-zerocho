@@ -1,17 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { addPost } from "../actions/postAction";
 
-const initialState = { data: [] };
-const postReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "ADD_POST":
-      return {
-        postList: [...state, action.data],
-      };
-    default:
-      return state;
-  }
-};
+const initialState = { isLoading: false, data: [] };
 
 const postSlice = createSlice({
   name: "post",
@@ -24,9 +14,17 @@ const postSlice = createSlice({
   },
   // 비동기적
   extraReducers: {
-    [addPost.pending](state, action) {},
-    [addPost.fulfilled](state, action) {},
-    [addPost.rejected](state, action) {},
+    [addPost.pending](state, action) {
+      state.isLoading = true;
+    },
+    [addPost.fulfilled](state, action) {
+      state.isLoading = false;
+      state.data = action.payload;
+    },
+    [addPost.rejected](state, action) {
+      state.isLoading = false;
+      state.data = [];
+    },
   },
 });
 
