@@ -53,3 +53,18 @@ runInAction(() => {
 runInAction(() => {
   state.compC = "d";
 });
+
+console.log("-------------------------------------\n");
+
+const userState = observable({
+  isLoggingIn: true,
+  data: null,
+});
+
+const postState = observable([]);
+
+postState.push({ id: 1, content: "hi" });
+userState.data = {
+  id: 1,
+  nickname: "sangwoo noh",
+};

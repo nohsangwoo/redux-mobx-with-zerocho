@@ -85,3 +85,8 @@ immer를 사용하면 이처럼 간단해진다
 ## 6. mobx
 
 - npm i mobx
+
+## 7. mobx-react
+
+- react 안에서 mobx 사용하기
+- npm install mobx mobx-react
