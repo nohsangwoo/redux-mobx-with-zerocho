@@ -81,3 +81,7 @@ immer를 사용하면 이처럼 간단해진다
 ## reselector
 
 - redux 사용시 리렌더링으로 자원소모되는 부분 해결해준다
+
+## 6. mobx
+
+- npm i mobx
