@@ -166,4 +166,4 @@ module.exports = {
 ## replace useLocalStore and userObserver
 
 // useLocalStore is deprecated
-// userObserver is Deprecated
+// useObserver is Deprecated
