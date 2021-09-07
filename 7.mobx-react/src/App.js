@@ -7,18 +7,25 @@ import { userStore, postStore } from "./store";
 // observer(App)과 같은 의미다
 @observer
 class App extends Component {
-  // state = observable({
-  //   name: "",
-  //   password: "",
-  // });
+  // state를 mobx로 대체하는 경우
+  userState = observable({
+    name: "",
+    password: "",
+    setName(name) {
+      this.name = name;
+    },
+    setPassword(password) {
+      this.password = password;
+    },
+  });
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      password: "",
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     name: "",
+  //     password: "",
+  //   };
+  // }
 
   onLogIn = () => {
     console.log("onLogin in App.js");
@@ -32,17 +39,10 @@ class App extends Component {
   };
 
   onChangeName = (e) => {
-    console.log(this.state);
-    this.setState({
-      name: e.target.value,
-    });
+    this.userState.setName(e.target.value);
   };
   onChangePassword = (e) => {
-    console.log(this.state);
-
-    this.setState({
-      password: e.target.value,
-    });
+    this.userState.setPassword(e.target.value);
   };
   render() {
     return (
@@ -61,8 +61,11 @@ class App extends Component {
         )}
         <div>{postStore.data.length}</div>
         <div>
-          <input value={this.state.name} onChange={this.onChangeName} />
-          <input value={this.state.password} onChange={this.onChangePassword} />
+          <input value={this.userState.name} onChange={this.onChangeName} />
+          <input
+            value={this.userState.password}
+            onChange={this.onChangePassword}
+          />
         </div>
       </div>
     );

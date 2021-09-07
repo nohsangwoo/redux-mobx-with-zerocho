@@ -150,3 +150,5 @@ module.exports = {
     ]
   }
 ```
+
+## state, setState를 mobx로 대체하는 패턴
