@@ -7,37 +7,41 @@ import { userStore, postStore } from "./store";
 // observer(App)과 같은 의미다
 @observer
 class App extends Component {
-  state = observable({
-    name: "",
-    password: "",
-  });
+  // state = observable({
+  //   name: "",
+  //   password: "",
+  // });
 
   constructor(props) {
     super(props);
     this.state = {
-      name: false,
-      password: false,
+      name: "",
+      password: "",
     };
   }
 
   onLogIn = () => {
+    console.log("onLogin in App.js");
     userStore.logIn({
       nickname: "sangwoo noh",
       password: "password",
     });
   };
-  inLogOut = () => {
+  onLogOut = () => {
     userStore.logOut();
   };
 
   onChangeName = (e) => {
-    this.state({
-      name: e.tartget.value,
+    console.log(this.state);
+    this.setState({
+      name: e.target.value,
     });
   };
   onChangePassword = (e) => {
-    this.state({
-      passwor: e.target.value,
+    console.log(this.state);
+
+    this.setState({
+      password: e.target.value,
     });
   };
   render() {
@@ -51,9 +55,9 @@ class App extends Component {
           "로그인 해주세요"
         )}
         {!userStore.data ? (
-          <button onClick={this.onClick}>로그인</button>
+          <button onClick={this.onLogIn}>로그인</button>
         ) : (
-          <button onClick={this.onLogout}>로그아웃</button>
+          <button onClick={this.onLogOut}>로그아웃</button>
         )}
         <div>{postStore.data.length}</div>
         <div>
