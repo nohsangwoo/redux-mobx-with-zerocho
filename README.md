@@ -158,3 +158,12 @@ module.exports = {
 - 녹화버튼 누르고 mobx관련 동작하면 log가 뜬다
 
 ## 8.mobx-react-hooks
+
+## mobx Computed 내용
+
+- mobx에서 불필요한 연산을 하지않고 캐싱하고 싶은 내용이 있다면 getter를 사용하면 된다.
+
+## replace useLocalStore and userObserver
+
+// useLocalStore is deprecated
+// userObserver is Deprecated
