@@ -156,3 +156,5 @@ module.exports = {
 ## mobx developer tools 을 chrome 웹스토어 확장 프로그램에서 적용해준다.
 
 - 녹화버튼 누르고 mobx관련 동작하면 log가 뜬다
+
+## 8.mobx-react-hooks
