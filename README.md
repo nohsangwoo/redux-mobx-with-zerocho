@@ -96,3 +96,57 @@ immer를 사용하면 이처럼 간단해진다
 - 고차함수로 감싸는 경우 사용한다.
 - class문법에서만 사용할수있다.
 - 정식 문법이 아니라 사용방법이 바뀌는 경우도 있다.
+
+## observer and mobx-devtools
+
+- CRA에서 eject 없이 mobx 데코레이터 사용하기
+  // npm
+  npm install --save -d customize-cra
+  npm install --save -d react-app-rewired
+
+- config-overrides.js를 root폴더에 추가 웹팩 오버라이딩 가능하게 하는 부분인듯
+
+```
+const {
+  addDecoratorsLegacy, // decorator를 사용할 수 있도록 해주는 config
+  disableEsLint,
+  override,
+} = require("customize-cra");
+
+// 사용자 정의 웹팩 설정
+module.exports = {
+  webpack: override(
+      disableEsLint(),
+      addDecoratorsLegacy()
+  ),
+};
+```
+
+- babel 플러그인 설치
+  npm install --dev @babel/plugin-proposal-decorators @babel/plugin-proposal-class-properties
+
+- 추가적인 es7 데코레이터 설치
+  npm install --dev core-
+- package.json에 내용추가
+
+```
+"babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ]
+    ]
+  }
+```

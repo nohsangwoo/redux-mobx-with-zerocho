@@ -1,31 +1,42 @@
 // when class component way
 import React, { Component } from "react";
-import { observable } from "mobx";
 import { observer } from "mobx-react";
+import { observable } from "mobx";
 import { userStore, postStore } from "./store";
 
 // observer(App)과 같은 의미다
 @observer
 class App extends Component {
+  state = observable({
+    name: "",
+    password: "",
+  });
+
   constructor(props) {
     super(props);
-
     this.state = {
       name: false,
       password: false,
     };
   }
-  userStore;
-  onLogIn = () => {};
-  inLogOut = () => {};
+
+  onLogIn = () => {
+    userStore.logIn({
+      nickname: "sangwoo noh",
+      password: "password",
+    });
+  };
+  inLogOut = () => {
+    userStore.logOut();
+  };
 
   onChangeName = (e) => {
-    this.setState({
+    this.state({
       name: e.tartget.value,
     });
   };
   onChangePassword = (e) => {
-    this.setState({
+    this.state({
       passwor: e.target.value,
     });
   };
