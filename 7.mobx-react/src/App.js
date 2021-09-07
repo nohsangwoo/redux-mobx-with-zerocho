@@ -5,7 +5,7 @@ import { observable } from "mobx";
 import { userStore, postStore } from "./store";
 
 // observer(App)과 같은 의미다
-@observer
+
 class App extends Component {
   // state를 mobx로 대체하는 경우
   userState = observable({
@@ -72,10 +72,4 @@ class App extends Component {
   }
 }
 
-export default App;
-
-// function App() {
-//   return <div className="App">hello mobx</div>;
-// }
-
-// export default App;
+export default observer(App);

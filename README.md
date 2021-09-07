@@ -167,3 +167,7 @@ module.exports = {
 
 // useLocalStore is deprecated
 // useObserver is Deprecated
+
+## mobx6에선 데코레이터가 자체적으로 다 사라졌다
+
+- 고차 함수 형태로 컴포넌트를 감싸준다.
