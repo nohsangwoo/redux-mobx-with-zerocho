@@ -171,3 +171,11 @@ module.exports = {
 ## mobx6에선 데코레이터가 자체적으로 다 사라졌다
 
 - 고차 함수 형태로 컴포넌트를 감싸준다.
+
+## 9.redux-saga
+
+- npm i redux-saga
+- generator 문법 (보통 무한의 개념이랑 비동기 처리할때 많이 쓰인다)
+  함수의 실행을 중간에 멈출 수 있고 원할 때 재개할 수 있다
+
+saga 또한 reducer처럼 combine해주는 기능으로 구조를 잡는다.
