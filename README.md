@@ -179,3 +179,8 @@ module.exports = {
   함수의 실행을 중간에 멈출 수 있고 원할 때 재개할 수 있다
 
 saga 또한 reducer처럼 combine해주는 기능으로 구조를 잡는다.
+
+## sagaMiddleware
+
+- toolkit에 적용해봐야함
+  ref : https://im-developer.tistory.com/195
