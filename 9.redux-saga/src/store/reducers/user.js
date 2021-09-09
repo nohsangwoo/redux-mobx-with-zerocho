@@ -9,6 +9,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         data: null,
+        loginState: "please login",
       };
     case "LOG_IN_REQUEST":
       return {

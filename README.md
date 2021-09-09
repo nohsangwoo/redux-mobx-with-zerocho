@@ -210,3 +210,10 @@ gen.next();
 ```
 
 다만 saga작동의 log를 보고싶을때(logger또는 reduxdevtools에서 확인하고 싶을때) dispatch사용하는곳에서 useEffect안에 넣어서 사용한다.
+
+## SAGA에서 반복문 제어하기
+
+## saga는 reducer와 별개로 동작한다.
+
+- 예컨데 saga함수를 5번만 작동하도록 반복문을 설정했다고 하더라도
+  이후 6번째 7번째...의 reducer는 계속 동작한다

@@ -20,10 +20,6 @@ function* logIn() {
   }
 }
 
-function* watchLogin() {
-  yield takeLatest(LOG_IN, logIn);
-}
-
 function* hello() {
   try {
     yield put({
@@ -35,12 +31,14 @@ function* hello() {
   }
 }
 
-function* helloSaga() {
-  // 무한반복문 설정을 안해두면 saga함수가 한번만 실행되고 생명주기가 끝나버려서
+function* watchhello() {
+  // 반복문 설정을 안해두면 saga함수가 한번만 실행되고 생명주기가 끝나버려서
   // 이후 take작동(dispatch에 의한 반응)에 대하여 대응하지 못한다
-  // 따라서 무한 반복문 설정을 해주어 함수의 생명주기를 끝내지 않고
+  // 따라서 반복문 설정을 해주어 함수의 생명주기를 끝내지 않고
   //  다음에도 saga요청에 의해 take작동을 대응할수있게 해준다.
-  while (true) {
+  //   무한 반복시(while(true)로 설정해도 되고)
+  // 해당 saga동작이 5번만 실행되게 하고싶다면 아래와 같이 반복문에 조건을 건다.
+  for (let i = 0; i < 5; i++) {
     // yield로 일단 함수가 멈춘상태로 대기하는데
     //  이때 redux saga의 take기능을 사용한다 take함수의 기능설명은 아래와 같다.
     //  1. HELLP_SAGA의 액션이 작동되는 순간을 기다리겠다.(트리거가 동작될때)
@@ -55,10 +53,26 @@ function* helloSaga() {
   }
 }
 
+function* watchLogin() {
+  // LOGIN트리거가 동작하면 take 함수에 의하여 중단점이 풀리고
+  // put(dispatch)가 실행된다.
+  while (true) {
+    yield take(LOG_IN);
+    yield put({
+      type: LOG_IN_SUCCESS,
+    });
+  }
+}
+
+function* wathSignUp() {
+  yield;
+}
+
 export default function* userSaga() {
   //   yield all([
   //     fork(helloSaga), // helloSaga
   //     fork(watchLogin), // watchLogin
   //   ]);
-  yield helloSaga();
+  //   watch함수가 여러개 존재하면 all로 묶어준다
+  yield all([watchhello(), watchLogin(), wathSignUp()]);
 }
