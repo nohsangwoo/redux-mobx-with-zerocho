@@ -3,9 +3,10 @@ import reducer from "./reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
 import ReduxThunk from "redux-thunk";
 // import sagaMiddleware from "./sagas/sagaMiddleware";
-import rootSaga from "./sagas";
-
 import createSagaMiddleware from "redux-saga";
+import logger from "redux-logger";
+
+import rootSaga from "./sagas";
 const sagaMiddleware = createSagaMiddleware();
 
 // const firstMiddleware = (store) => (next) => (action) => {
@@ -13,7 +14,8 @@ const sagaMiddleware = createSagaMiddleware();
 // };
 const applyMiddlewareWrapper = applyMiddleware(
   ReduxThunk, // thunk는 extreaParameter옵션을 붙일수 있음
-  sagaMiddleware // sagaMiddleware적용
+  sagaMiddleware, // sagaMiddleware적용
+  logger
 );
 
 const enhancer =

@@ -184,3 +184,5 @@ saga 또한 reducer처럼 combine해주는 기능으로 구조를 잡는다.
 
 - toolkit에 적용해봐야함
   ref : https://im-developer.tistory.com/195
+
+## generator 문법

@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./App.css";
 import { logIn } from "./store/actions/userAction";
 
 function App() {
@@ -17,7 +16,8 @@ function App() {
         nickName: "Sangwoo Noh",
       })
     );
-  }, []);
+  }, [dispatch]);
+
   return (
     <div className="App">
       <div style={{ display: "flex", flexDirection: "column" }}>
