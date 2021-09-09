@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logIn } from "./store/actions/userAction";
 
@@ -17,6 +17,18 @@ function App() {
       })
     );
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch({
+      type: "HELLO_SAGA",
+    });
+    dispatch({
+      type: "HELLO_SAGA",
+    });
+    dispatch({
+      type: "HELLO_SAGA",
+    });
+  }, []);
 
   return (
     <div className="App">

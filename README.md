@@ -186,3 +186,27 @@ saga 또한 reducer처럼 combine해주는 기능으로 구조를 잡는다.
   ref : https://im-developer.tistory.com/195
 
 ## generator 문법
+
+```
+<!-- generator 함수 생성 -->
+function* generator() {
+  console.log(1);
+  console.log(2);
+  yield 5;
+  console.log(3);
+  yield 7;
+}
+
+<!-- generator컨트롤 하기위한 작업 -->
+const gen = generator();
+
+gen.next();
+// console.log에 의해서 1, 2 가 순서대로 출력
+// 그리고 yield에 의해서 함수작동이 멈추고 {value:5 done: false}를 반환한다
+// yield로 넘겨받은 값이5이고 함수의 작동이 완전히 끝난것이 아니다를 알려주는 done
+// 만약 gen.next(); 를 두번실행하여 함수의 작동이 완전히 끝났다면
+<!-- done의 값은 true를 반환한다. -->
+
+```
+
+다만 saga작동의 log를 보고싶을때(logger또는 reduxdevtools에서 확인하고 싶을때) dispatch사용하는곳에서 useEffect안에 넣어서 사용한다.
