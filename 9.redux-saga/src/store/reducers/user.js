@@ -28,6 +28,11 @@ const userReducer = (state = initialState, action) => {
         data: null,
         loginState: "로그인 실패",
       };
+    case "BYE_SAGA":
+      console.log("BYE_SAGA");
+      return {
+        ...state,
+      };
     default:
       return state;
   }

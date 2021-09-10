@@ -39,16 +39,71 @@ function App() {
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div>{user.loginState}</div>
       </div>
-      {user.data ? <div>{user.data.nickName}</div> : "please login"}
-      <button onClick={onLogIn}>Log In</button>
-      <button onClick={onLogOut}>Log Out</button>
-      <button
-        onClick={() => {
-          dispatch({ type: "LOG_IN" });
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          width: "500px",
         }}
       >
-        SAGA LOGIN
-      </button>
+        <button
+          style={{
+            borderRadius: "10px",
+            padding: "10px",
+            border: "1px solid black",
+            background: "white",
+            fontWeight: 500,
+            cursor: "pointer",
+          }}
+          onClick={onLogIn}
+        >
+          Log In
+        </button>
+        <button
+          style={{
+            borderRadius: "10px",
+            padding: "10px",
+            border: "1px solid black",
+            background: "white",
+            fontWeight: 500,
+            cursor: "pointer",
+          }}
+          onClick={onLogOut}
+        >
+          Log Out
+        </button>
+        <button
+          style={{
+            borderRadius: "10px",
+            padding: "10px",
+            border: "1px solid black",
+            background: "white",
+            fontWeight: 500,
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            dispatch({ type: "LOG_IN" });
+          }}
+        >
+          SAGA LOGIN
+        </button>
+
+        <button
+          style={{
+            borderRadius: "10px",
+            padding: "10px",
+            border: "1px solid black",
+            background: "white",
+            fontWeight: 500,
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            dispatch({ type: "HELLO_SAGA" });
+          }}
+        >
+          HELLO_SAGA
+        </button>
+      </div>
     </div>
   );
 }
