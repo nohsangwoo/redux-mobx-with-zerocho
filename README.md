@@ -244,7 +244,7 @@ function* watchhello() {
 }
 ```
 
-## redux-saga : take
+## redux-saga : takeEvery
 
 ```
 function* watchHello() {
@@ -259,4 +259,28 @@ function* watchHello() {
     console.log(5);
   });
 }
+```
+
+## redux-saga : takeLatest
+
+- 이전 요청이 끝나지 않은게 있다면 이전요청을 취소한다.
+- 동시에 같은 동작이 여러번 실행된다면 마지막 동작만 실행해 주는것
+
+```
+function* watchHello() {
+  yield takeLatest(HELLO_SAGA, function* () {
+    console.log(1);
+    console.log(2);
+    delay(1000);
+    console.log(3);
+    console.log(4);
+    console.log(5);
+    yield put({
+      type: "BYE_SAGA",
+    });
+  });
+}
+<!-- 이상황에서 watchHello를 버튼에 연결하여 1초안에 5번 눌러도 HELLO_SAGA트리거에 연결된 제네레이터 함수내용을 한번만 실행된다 -->
+<!-- 그러나 takeEvery로 처리하면 5번 전부 각각 동작할 것 이다. -->
+<!-- 예컨데 리렌더링으로 인한 중복 요청 또는 로그인 버튼을 사용자가 순간 여러번 누른다던지, 이런 동작을 제어할 수 있다. -->
 ```

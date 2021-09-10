@@ -1,6 +1,7 @@
 import {
   all,
   call,
+  delay,
   fork,
   put,
   take,
@@ -40,9 +41,11 @@ function* hello() {
 }
 
 function* watchHello() {
-  yield takeEvery(HELLO_SAGA, function* () {
+  //   yield takeEvery(HELLO_SAGA, function* () {
+  yield takeLatest(HELLO_SAGA, function* () {
     console.log(1);
     console.log(2);
+    yield delay(1000);
     console.log(3);
     console.log(4);
     console.log(5);
