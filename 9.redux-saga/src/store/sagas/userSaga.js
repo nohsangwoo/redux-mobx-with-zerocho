@@ -13,7 +13,10 @@ console.log("user saga");
 
 const HELLO_SAGA = "HELLO_SAGA";
 
-function* loginAPI() {}
+function* loginAPI() {
+  yield delay(500);
+  console.log("loginAPI was activated");
+}
 
 function* logIn() {
   try {
@@ -40,19 +43,24 @@ function* hello() {
   }
 }
 
+function* hello2() {
+  // 비동기적으로 함수를 실행하기 위해서 call 로 함수 실행
+  // 즉 loginAPI의 함수의 생명주기가 다 끝나야 이하의 내용이 실행된다.
+  yield call(loginAPI);
+  console.log(1);
+  console.log(2);
+  yield delay(1000);
+  console.log(3);
+  console.log(4);
+  console.log(5);
+  yield put({
+    type: "BYE_SAGA",
+  });
+}
+
 function* watchHello() {
   //   yield takeEvery(HELLO_SAGA, function* () {
-  yield takeLatest(HELLO_SAGA, function* () {
-    console.log(1);
-    console.log(2);
-    yield delay(1000);
-    console.log(3);
-    console.log(4);
-    console.log(5);
-    yield put({
-      type: "BYE_SAGA",
-    });
-  });
+  yield takeLatest(HELLO_SAGA, hello2);
 }
 /*
 function* watchHello() {
@@ -99,5 +107,12 @@ export default function* userSaga() {
   //     fork(watchLogin), // watchLogin
   //   ]);
   //   watch함수가 여러개 존재하면 all로 묶어준다
-  yield all([watchHello(), watchLogin(), wathSignUp()]);
+  yield all([
+    // fork, call: 함수를 실행해주는 saga 처리함수
+    // call은 동기호출, fork는 비동기 호출
+    // 여기선 작업의 순서없이 동시다발적으로 실행돼야하기 때문에 fork를 사용해서 함수를 실행한다.
+    fork(watchHello), // fork로 호출
+    fork(watchLogin),
+    fork(wathSignUp),
+  ]);
 }
