@@ -20,7 +20,9 @@ const sumPriceSelector = createSelector(priceSelector, (prices) =>
 */
 
 // createSelecor를 export해서 사용하는 방법
+// 다른 컴포넌트에서 재사용 하고싶다면 함수로 한단계 더 감싸서 export 시켜준다
 export const makeSumPriceSelector = () =>
+  // prices의 값의 변화가 없다면 해당 return 값을 캐싱해준다
   createSelector(priceSelector, (prices) => prices.reduce((a, c) => a + c, 0));
 
 const sumPriceSelector = makeSumPriceSelector();
